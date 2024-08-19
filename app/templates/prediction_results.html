@@ -1,0 +1,213 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="icon" href="https://i.ibb.co/7GQw6SW/Screenshot-2024-07-25-203806.png" type="image/icon type">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+        
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            .download-btn{
+                margin-left:1000px;
+            }
+            h1 {
+                color: #333;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f4f4f4;
+            }
+            .header {
+                display: flex;
+                align-items: center;
+            }
+            .header img {
+                width: 200px;
+                margin-right: 1500px;
+            }
+            /*.header h2 {
+                margin: 0;
+            }*/
+            .user-details {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            #mytable {
+            width: 50%;
+                border: none;
+                border-collapse: collapse;
+            }
+            #mytable th, #mytable td {
+                border: none; /* No borders for mytable */
+            }
+        </style>
+    </head>
+    <body>
+        <button class="download-btn" onclick="downloadPDF()">Download as PDF</button>
+        <div class="header">
+            <img src="https://i.ibb.co/Fnf5xdM/Screenshot-2024-07-25-203453.png" alt="Sepsis Foresee Logo">
+            //<h2>Sepsis Foresee</h2>
+        </div>
+        
+        <table id="mytable">
+        <tr>
+        <td><b>Name:</b></td>
+        <td>Raman</td>
+        </tr>
+        <tr>
+        <td><b>Age:</b></td>
+        <td>43</td>
+        </tr>
+        <tr>
+        <td><b>Gender:</b></td>
+        <td>Male</td>
+        </tr>
+                <tr>
+                   <th><b>RESULT : </b></th>
+                   <th><B>POSITIVE</b></th><br>
+                </tr>
+                <tr>
+                <th><b>CONFIDENCE : </b></th>
+                <th>99</th><br>
+                </tr>
+                
+        </table>
+
+   
+        <h1>Prediction Results</h1>
+        <tbody>
+                <tr>
+                <th><b>RESULT : </b></th>
+
+        
+                    <p>The model predicts a high risk of sepsis for this patient.</p>
+                </tr>
+    
+                    <p>Please ensure immediate evaluation and monitoring.</p>
+                </tr>
+    
+                    <p>Consult with a healthcare professional to confirm and take appropriate action.</p>
+                </tr>
+    
+        <table id="detail">
+            <thead>
+                <tr>
+                    <th>Vital Sign</th>
+                    <th>Value</th>
+                    <th>Level</th>
+                </tr>
+            </thead>
+            
+                
+                <tr>
+                    <td>Heart Rate</td>
+                    <td>84.47</td>
+                    <td>Normal</td>
+                </tr>
+        
+                <tr>
+                    <td>Respiration Rate</td>
+                    <td>17.76</td>
+                    <td>Normal</td>
+                </tr>
+        
+                <tr>
+                    <td>Temperature (celsius)</td>
+                    <td>34.97</td>
+                    <td>Severely Low (Hypothermia)</td>
+                </tr>
+        
+                <tr>
+                    <td>Diastolic Blood Pressure</td>
+                    <td>60.28</td>
+                    <td>Normal</td>
+                </tr>
+        
+                <tr>
+                    <td>Systolic Blood Pressure</td>
+                    <td>120.23</td>
+                    <td>High</td>
+                </tr>
+        
+                <tr>
+                    <td>Mean Arterial Pressure</td>
+                    <td>78.0</td>
+                    <td>Normal</td>
+                </tr>
+        
+                <tr>
+                    <td>Oxygen Saturation</td>
+                    <td>98.47</td>
+                    <td>Normal</td>
+                </tr>
+        
+    </tbody>
+        </table>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+        <script>
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Add logo
+        const img = new Image();
+        img.src = 'https://i.ibb.co/Fnf5xdM/Screenshot-2024-07-25-203453.png';
+        doc.addImage(img, 'PNG', 140, 10, 50, 20);
+        
+        // Add title
+        doc.setFontSize(8);
+        doc.text('PREDICT . PROTECT . PREVENT', 145, 35);
+
+        doc.setFontSize(30);
+        doc.text('REPORT SUMMARY', 10, 30);
+
+        // Add user details
+        //doc.setFontSize(12);
+        //doc.text('Name: {name}', 10, 50);
+        //doc.text('Age: {data[7]}', 10, 60);
+        
+        doc.setFontSize(15);
+        doc.text('Details :', 15, 60);
+        
+        doc.autoTable({
+            html: '#mytable',
+            startY: 70,
+        });
+
+        doc.setFontSize(15);
+        doc.text('Abnormalities :', 15, 120);
+        // Generate table content
+        doc.autoTable({
+            html: '#detail',
+            theme: 'grid',
+            startY: 130,
+            headStyles: { fillColor: [0, 0, 0] },
+            alternateRowStyles: { fillColor: [255, 255, 255] }
+        });
+
+        // Save the generated PDF
+        doc.save('prediction_results.pdf');
+    }
+</script>
+
+    </body>
+    </html>
+    

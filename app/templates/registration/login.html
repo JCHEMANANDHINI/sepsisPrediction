@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="jumbotron">
+    <h2>Please Login:</h2>
+    <h3>(Must be SuperUser, please check admin for issues.)</h3>
+    {% if form.errors %}
+        <p>Your username and password didn't match.Please try again!</p>
+    {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+<div>
+    <input type="submit" class='btn btn-primary' value="Login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+    <p>Click below to login with Google</p>
+        <!--            Paste the generated HTML code for Google sign in button goes here-->
+        <div id="g_id_onload"
+     data-client_id="64127639961-c4svua7retbl1h7m342a95q13dm4llt1.apps.googleusercontent.com"
+     data-context="login"
+     data-ux_mode="redirect"
+     data-login_uri="http://localhost:8000/auth-receiver"
+     data-itp_support="true">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+       
+    </div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepsis foresee</title>
+    <link rel="icon" href="https://i.ibb.co/7GQw6SW/Screenshot-2024-07-25-203806.png" type="image/icon type">
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <meta name="google-signin-client_id" content="64127639961-c4svua7retbl1h7m342a95q13dm4llt1.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId());
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+        }
+    </script>
+    <style media="screen">
+        *,
+  *:before,
+  *:after{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  body{
+      background-color:#b2cbd8;
+  }
+  .background{
+      width: 430px;
+      height: 520px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+  }
+  .background .shape{
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+  }
+  .shape:first-child{
+      background: linear-gradient(
+          #1845ad,
+          #23a2f6
+      );
+      left: -80px;
+      top: -80px;
+  }
+  .shape:last-child{
+      background: linear-gradient(
+          to right,
+          #ff512f,
+          #f09819
+      );
+      right: -30px;
+      bottom: -80px;
+  }
+  form{
+      height: 600px;
+      width: 450px;
+      background-color: rgba(255,255,255,0.13);
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      padding: 50px 35px;
+  }
+  form *{
+      font-family: 'Poppins',sans-serif;
+      color: #0b0b0b;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+  }
+  form h3{
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+      /* color: black; */
+  }
+  
+  label{
+      display: block;
+      margin-top: 30px;
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+  }
+  input{
+      display: block;
+      height: 40px;
+      width: 100%;
+      background-color: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 2px;
+      font-size: 14px;
+      font-weight: 300;
+      
+  }
+  ::placeholder{
+      color: #857f7f;
+  }
+  button{
+      margin-top: 14px;
+      width: 100%;
+      background-color: #ffffff;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .social{
+    margin-top: 30px;
+    display: flex;
+  }
+  .social div{
+    background: red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255,255,255,0.27);
+    color: #eaf0fb;
+    text-align: center;
+  }
+  .social div:hover{
+    background-color: rgba(255,255,255,0.47);
+  }
+  .social .fb{
+    margin-left: 25px;
+  }
+  .social i{
+    margin-right: 4px;
+  }
+
+  a{
+    text-decoration: none;
+    display: block;
+  }
+
+  a:hover{
+    text-decoration: underline;
+}
+
+.button {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-left: 75px;
+    margin-right: 75px;
+    /* margin: 200px 50px 0px 50px; */
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+          }
+.create{
+    margin-top: 10px;
+}
+  
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .g_id_signin {
+            margin-top: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %} 
+        <h3>Signup Here</h3>
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" name="email" id="email">
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <button type="submit">Signup</button>
+        <!-- <a href="{% url 'home' %}" class="button">Sign Up</a> -->
+        <div class="create">
+        <a href="{% url 'login' %}" > Have an account? Click to Log In</a>
+        </div>
+    </form>
+
+<!-- <div class="container">
+    {% if request.session.user_data %}
+    <div>
+        <p>Hi {{ request.session.user_data.given_name }} 🙂</p>
+        <p>Your email is {{ request.session.user_data.email }}</p>
+        <img src="{{ request.session.user_data.picture }}" alt="User picture">
+        <p>Click here to <a href="/sign-out">Sign out</a></p>
+    </div>
+    {% else %} -->
+    <!-- <div>
+        
+        <p> 😀 Hi there 😀 </p>
+        <p>Click below to sign up with Google</p>
+                   Paste the generated HTML code for Google sign in button goes here
+        <div id="g_id_onload"
+     data-client_id="64127639961-c4svua7retbl1h7m342a95q13dm4llt1.apps.googleusercontent.com"
+     data-context="signup"
+     data-ux_mode="popup"
+     data-login_uri="http://localhost:8000/auth-receiver"
+     data-itp_support="true">
+</div> -->
+
+<!-- <div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div> 
+       
+    </div>
+    {% endif %}
+</div> -->
+
+
+        
+         {% if message %}  <script>alert("{{ message }}")</script> {% endif %}
+
+</body>
+
+</html>
+

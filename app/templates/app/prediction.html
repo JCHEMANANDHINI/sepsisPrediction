@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepsis foresee</title>
+    <link rel="icon" href="https://i.ibb.co/7GQw6SW/Screenshot-2024-07-25-203806.png" type="image/icon type">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* .background{ */
+              /* background-image: url('https://i0.wp.com/www.missouripartnership.com/wp-content/uploads/2018/01/iStock-695349930-scaled.jpg?resize=1024%2C386&ssl=1'); */
+              /* background-image: url("https://i.ibb.co/b6jvWRV/Screenshot-2024-08-12-185633.png"); */
+              /* background-color: brown; */
+        /* } */
+        .button {
+              /* margin-top: 200px; */
+              margin-top: 100px;
+              margin-left: 200px;
+              padding: 10px 20px;
+              background-color: white;
+              color: black;
+              border: none;
+              /* border-radius: 10px; */
+              cursor: pointer;
+              display: inline-block;
+              border-radius: 100px;
+              /* border-color: black; */
+          }
+          .button2 {
+              /* margin-top: 200px; */
+              margin-top: 100px;
+              margin-right: 180px;
+              padding: 10px 20px;
+              background-color: white;
+              color: black;
+              border: none;
+              /* border-radius: 10px; */
+              cursor: pointer;
+              display: inline-block;
+              border-radius: 100px;
+              /* border-color: black; */
+          }
+          .content {
+              background-color: rgba(230, 227, 227, 0.5);
+              padding: 20px;
+              border-radius: 0px;
+              /* text-align: center;  */
+              margin-top: 75px;
+              padding-left: 200px;
+              /* border-radius: 100px;
+              border-color: black; */
+          }
+          
+          .sep{
+            margin-left: 150px;
+          }
+          /* h2{
+            margin-left: -1000px;
+          } */
+          h1 {
+              font-size: 2.5em;
+          }
+          .con {
+              background-color: rgba(230, 227, 227, 0.5);
+              padding-top: 30px ;
+              padding-bottom: 100px;
+              padding-left: 100px;
+              padding-right: 100px;
+              border-radius: 100px;
+              margin-top: 20px;
+              /* margin-right: 400px; */
+              /* padding-left: 50px; */
+              /* text-align: center; */
+              /* padding-right: 300px; */
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+          }
+          label{
+            margin-top: 30px;
+            margin-left: 50px;
+          }
+          input{
+            margin-top: 30px;
+            margin-left: 50px;
+            /* border-color: brown; */
+            /* border-width: 2px; */
+            /* border: 2px solid red ; */
+            
+          }
+          .invalid-input {
+            /* border-color: red ;
+            border-width: 2px; */
+            border: 2px solid red ;
+
+        }
+
+        /* .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.left {
+    flex: 1;
+    text-align: left;
+}
+
+.right {
+    flex: 1;
+    text-align: right;
+    margin-left: -110px;
+}
+
+.OR {
+    margin: 0px;
+    white-space: nowrap; /* Ensures OR text stays on one line */
+}
+
+    </style>
+    <script>
+    const isNumeric = (str) => {
+        const reg = /[^A-Za-z .]/
+        return reg.test(str);
+    }
+      function validateForm() {
+            // Get all input elements
+            // event.preventDefault()
+            var inputs = document.querySelectorAll('input[type="text"]');
+            var valid = true;
+
+            inputs.forEach(function(input) {
+                var value = input.name==="Name"?input.value:parseFloat(input.value);
+                
+                var name = input.name;
+                var isValid = true;
+
+                // Validate each input based on its name
+                switch (name) {
+                  case "Name":
+                  
+                    if(value.length===0 || isNumeric(value)){
+                      isValid = false;
+                    }
+                    break;
+                    case 'Age':
+                        if (isNaN(value) || value < 0 || value > 100) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'Res':
+                        if (isNaN(value) || value < 12 || value > 25) {
+                            isValid = false;
+                        }
+                        break;
+                    // case 'PO':
+                    //     if (isNaN(value) || value < 20 || value > 60) {
+                    //         isValid = false;
+                    //     }
+                    //     break;
+                    case 'HR':
+                        if (isNaN(value) || value < 30 || value > 200) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'MAP':
+                        if (isNaN(value) || value < 50 || value > 120) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'DBP':
+                        if (isNaN(value) || value < 40 || value > 120) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'SBP':
+                        if (isNaN(value) || value < 70 || value > 200) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'O2Sat':
+                        if (isNaN(value) || value < 70 || value > 100) {
+                            isValid = false;
+                        }
+                        break;
+                    case 'tem':
+                        if (isNaN(value) || value < 20 || value > 105) {
+                            isValid = false;
+                        }
+                        break;
+                    default:
+                        isValid = true; // Assume other fields are valid
+                        break;
+                }
+
+                if (!isValid) {
+                    valid = false;
+                    input.classList.add('invalid-input');
+                    input.style.borderColor = 'red'; // Add class for invalid input
+                    // alert(input.classList)
+                    // alert(`Invalid input: ${name}. Please enter a valid number in the specified range.`);
+                } else {
+                    input.classList.remove('invalid-input');
+                    input.style.borderColor = ''; // Remove class if input is valid
+                }
+            })
+            var f=0;
+            if (!valid){
+                event.preventDefault()
+              alert(`Invalid input: Please enter a valid value in the specified range.`);
+              
+            }
+            // else if(f==0){
+            //     event.preventDefault()
+            //     alert("Please check your values once again");
+            //     var f=1;
+            // }
+            else{
+            return valid; // Return false to prevent form submission if invalid
+            }
+        }
+      // function validateForm() {
+      //       // Get all input elements
+      //       var inputs = document.querySelectorAll('input[type="text"]');
+      //       var valid = true;
+      //       console.log(inputs)
+
+      //       // Loop through each input to validate the value
+      //       inputs.forEach(function(input) {
+      //           var value = parseFloat(input.value);
+      //           if (isNaN(value) || value < 0 || value > 100) {
+      //               valid = false;
+      //               input.style.borderColor = 'red'; // Highlight invalid input
+      //               alert(`Invalid input: ${input.name}. Please enter a number between 0 and 100.`);
+      //           } else {
+      //               input.style.borderColor = ''; // Reset border color for valid input
+      //           }
+      //       });
+
+      //       return valid; // Return false to prevent form submission if invalid
+
+      //       // var age = document.querySelectorAll('input[name="Age"]');
+      //       // console.log(age)
+      //       // var valid = true;
+
+      //       // // Loop through each input to validate the value
+            
+      //       //     var ageValue = parseInt(age.value);
+      //       //     if (isNaN(ageValue) || ageValue < 0 || ageValue > 100) {
+      //       //         valid = false;
+      //       //         age.style.borderColor = 'red'; // Highlight invalid input
+      //       //         alert(`Invalid input: Age. Please enter a number between 0 and 100.`);
+      //       //     } else {
+      //       //         age.style.borderColor = ''; // Reset border color for valid input
+      //       //     }
+            
+
+      //       // return valid; // Return false to prevent form submission if invalid
+      //   }
+  </script>
+</head>
+<body class='loader'>
+    <nav id="navbar" class="">
+      <div class="nav-wrapper">
+        <!-- Navbar Logo -->
+        <div class="logo">
+          <!-- Logo Placeholder for Illustration -->
+          <a href="{% url 'home' %}"><img width="100px" height="auto" src="https://i.ibb.co/Fnf5xdM/Screenshot-2024-07-25-203453.png"></a>
+        </div>
+    
+        <!-- Navbar Links -->
+        <ul id="menu">
+          <li><a href="{% url 'base' %}">Home</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <!-- <li><a href="{% url 'sign_up' %}"> Signup </a></li> -->
+          <li><a href="{% url 'logout' %}"> Logout </a></li>
+          <!-- <li><a href=""></a></li> -->
+  
+        </ul>
+      </div>
+    </nav>
+
+</nav>
+<div class="background">
+<div class="content">
+<h1>PREDICTION</h1>
+</div>
+<h1 class="sep">Sepsis Prediction</h1>
+<div class="con">
+
+
+        <!-- <form id="vitals-form"> -->
+            <!-- <label for="heart-rate">Heart Rate (bpm):</label>
+            <input type="number" id="heart-rate" name="heart_rate" required><br>
+            <label for="respiratory-rate">Respiratory Rate (breaths/min):</label>
+            <input type="number" id="respiratory-rate" name="respiratory_rate" required><br>
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="0.1" id="temperature" name="temperature" required><br>
+            <label for="oxygen-saturation">Oxygen Saturation (%):</label>
+            <input type="number" id="oxygen-saturation" name="oxygen_saturation" required><br>
+            <label for="systolic-bp">Systolic Blood Pressure (mmHg):</label>
+            <input type="number" id="systolic-bp" name="systolic_bp" required><br>
+            <label for="diastolic-bp">Diastolic Blood Pressure (mmHg):</label>
+            <input type="number" id="diastolic-bp" name="diastolic_bp" required><br> -->
+            <!-- <form action="{%url 'predict'%}" method="POST">
+              Pregnancy Count: <input type="number" name='prg_ctr' placeholder="Enter Pregnancy Count"><br>
+              Plasma Glucose Concentration: <input type="number" name='pl_glucose_conc.' placeholder="Enter Plasma Glucose Concentration"><br>
+              Diastolic Blood Pressure: <input type="number" name='bp' ><br>
+
+              Skinfold Thickness: <input type="number" name='skin_thick' ><br>
+              Serum Insulin: <input type="number" name='insulin' ><br>
+              BMI: <input type="float" name='bmi' ><br>
+              Diabetes Pedigree Function: <input type="float" name='diabetes' ><br>
+              Age: <input type="number" name='age' ><br>
+              <input type="submit" value="predict" class="button">
+          </form> -->
+          {% if error %}
+          <p style="color: red;">{{ error }}</p>
+          {% endif %}
+          <!-- <form method="post" action="/predict/" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="heart_rate">Heart Rate (bpm):</label>
+            <input type="text" name="heart_rate" placeholder="Heart Rate" required><br>
+    
+            <label for="map">Mean Arterial Pressure (MAP, mmHg):</label>
+            <input type="text" name="map" placeholder="Mean Arterial Pressure" required><br>
+    
+            <label for="diastolic_bp">Diastolic Blood Pressure (DBP, mmHg):</label>
+            <input type="text" name="diastolic_bp" placeholder="Diastolic Blood Pressure" required><br>
+    
+            <label for="systolic_bp">Systolic Blood Pressure (SBP, mmHg):</label>
+            <input type="text" name="systolic_bp" placeholder="Systolic Blood Pressure" required><br>
+    
+            <label for="oxygen_saturation">Oxygen Saturation (%):</label>
+            <input type="text" name="oxygen_saturation" placeholder="Oxygen Saturation" required><br>
+    
+            <label for="temperature">Temperature (°F):</label>
+            <input type="text" name="temperature" placeholder="Temperature" required><br>
+    
+            <button type="submit">Predict</button>
+        </form> -->
+           <!-- <form action="{% url 'predict' %}" method="POST" "> -->
+             <!-- <form  method="POST" onsubmit="return validateForm()">-->
+        <div class="left">
+            <form method="post" action="/predict/" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" name="Name" placeholder="Name" ><br>
+            <label for="Age">Age:</label>
+            <input type="text" id="Age" name="Age" placeholder=" Age" ><br>
+            
+            <!-- <form> -->
+                <label for="Gender">Gender:</label>
+                <label>
+                  <input type="radio" name="Gender" value="Male" >
+                  Male
+                </label>
+              
+                <label>
+                  <input type="radio" name="Gender" value="Female">
+                  Female
+                </label><br>
+              <!-- </form> -->
+              
+            <!-- <label for="Gender">Gender:</label> -->
+            <!-- <input id="Gender" type="radio" name="Gender" value="Gender"> -->
+
+            <!-- <input type="radio"><br> -->
+            <!-- <input type="radio" id="male" name="Male" value="Male">
+            <label for="Male">Male</label>  -->
+
+            <!-- <input type="radio" id="female" name="Female" value="Female">
+            <label for="Female">Female</label><br> -->
+            <!-- <input type="text" id="Gender" name="Gender" placeholder="Gender" ><br> -->
+
+            <label for="tem">Temperature:</label>
+            <input type="text" id="tem" name="tem" placeholder="Temperature"><br>
+            <label for="HR">Heart Rate:</label>
+            <input type="text" id="HR" name="HR" placeholder=" Heart Rate" ><br>
+            <!-- <label for="PO">Pulse Oximetry:</label> -->
+            <!-- <input type="text" id="PO" name="PO" placeholder="Pulse Oximetry" ><br>-->
+            <label for="Res">Respiratory Rate:</label>
+            <input type="text" id="Res" name="Res" placeholder=" Respiratory Rate" ><br>
+            <label for="O2Sat">O2Sat:</label>
+            <input type="text" id="O2Sat" name="O2Sat" placeholder=" O2Sat" ><br>
+            <label for="SBP">Systolic Blood Pressure:</label>
+            <input type="text" id="SBP" name="SBP" placeholder=" Systolic Blood Pressure" ><br>
+            <label for="DBP">Diastolic Blood Pressure:</label>
+            <input type="text" id="DBP" name="DBP" placeholder=" Diastolic Blood Pressure" ><br>
+            <label for="MAP">Mean Arterial Pressure:</label>
+            <input type="text" id="MAP" name="MAP" placeholder=" Mean Arterial Pressure" ><br>
+            <button type="submit" class="button">Predict</button>
+        </form>
+    </div>
+    <p class="OR">( OR )</p>
+        
+<div class="right">
+        
+    <h2>Upload a PDF File or a IMAGE File</h2>
+    <!-- <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="pdfFile"></label>
+        <input type="file" id="pdfFile" name="pdfFile" accept="application/pdf" required>
+        <br><br>
+        <input type="submit" class="button" value="Upload">
+    </form> -->
+    <form action="/pdf_predict/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" />
+        <!-- <button type="submit">Submit</button> -->
+        <input type="submit" class="button2" value="Predict">
+    </form> 
+    <!-- <form action="/pdf_predict/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file" />
+        <button type="submit">Upload</button>
+    </form> -->
+    <!-- <h2>Upload PDF</h2>
+<form action="/pdf_predict/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="pdf_file" accept="application/pdf" required>
+    <button type="submit">Upload and Predict</button>
+</form> -->
+</div>
+            <!-- <h1>Prediction Result</h1> -->
+    
+    <!-- {% if result %} -->
+        <!-- <p>{{ result }}</p> -->
+    <!-- {% else %} -->
+        <!-- <p>No prediction available. Please submit the form to get a prediction.</p> -->
+    <!-- {% endif %} -->
+           
+          <!-- {% if result %} -->
+          <!-- <p style="color: black;">{{ result }}</p> -->
+          <!-- {% endif %} -->
+          <!-- <h1>Prediction Result</h1>
+    
+    {% if result %}
+        <p>{{ result }}</p>
+    {% else %}
+        <p>No prediction available. Please submit the form to get a prediction.</p>
+    {% endif %} -->
+          <!-- <form method="post" action="/predict/">
+            {% csrf_token %}
+            <input type="text" name="prg_ctr" placeholder="Pregnancies" required>
+            <input type="text" name="glucose_conc" placeholder="Glucose Concentration" required>
+            <input type="text" name="diastolic_bp" placeholder="Diastolic Blood Pressure" required>
+            <input type="text" name="thickness" placeholder="Skin Thickness" required>
+            <input type="text" name="insulin" placeholder="Insulin" required>
+            <input type="text" name="bmi" placeholder="BMI" required>
+            <input type="text" name="dpf" placeholder="Diabetes Pedigree Function" required>
+            <input type="text" name="age" placeholder="Age" required>
+            <button type="submit">Predict</button>
+        </form> -->
+            <!-- <button type="submit">Submit</button> -->
+        <!-- </form> -->
+
+        <!-- <div id="report" style="display:none;">
+            <h2>Sepsis Risk Report</h2>
+            <p id="risk-score"></p>
+            <h3>Details</h3>
+            <ul id="report-details"></ul>
+
+        
+        
+    </div> -->
+
+</div>
+    <script> 
+      // function validateForm(event) { -->
+          // Get all input elements
+          // var inputs = document.querySelectorAll('input[type="text"]');
+          // var valid = true;
+
+          // // Loop through each input to validate the value
+          // inputs.forEach(function(input) {
+          //     var value = parseFloat(input.value);
+          //     if (isNaN(value) || value < 0 || value > 100) {
+          //         valid = false;
+          //         input.style.borderColor = 'red'; // Highlight invalid input
+          //         alert(`Invalid input: ${input.name}. Please enter a number between 0 and 100.`);
+          //     } else {
+          //         input.style.borderColor = ''; // Reset border color for valid input
+          //     }
+          // });
+
+          // return valid; // Return false to prevent form submission if invalid
+      
+      // function submitFn(event){
+      // <!-- event.preventDefault()
+      //   if(event.target.Age.value<0){
+      //     alert("Age cannot be negative");
+      //   }
+      //   console.log(event.target.Age.value)
+      // } -->
+        // document.getElementById('vitals-form').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     const heartRate = document.getElementById('heart-rate').value;
+        //     const respiratoryRate = document.getElementById('respiratory-rate').value;
+        //     const temperature = document.getElementById('temperature').value;
+        //     const oxygenSaturation = document.getElementById('oxygen-saturation').value;
+        //     const systolicBp = document.getElementById('systolic-bp').value;
+        //     const diastolicBp = document.getElementById('diastolic-bp').value;
+
+        //     // Example of how you might handle the form submission
+        //     document.getElementById('report').style.display = 'block';
+        //     document.getElementById('risk-score').innerHTML = Risk Score: Example Score;
+        //     document.getElementById('report-details').innerHTML = `
+        //         <li>Heart Rate: ${heartRate}</li>
+        //         <li>Respiratory Rate: ${respiratoryRate}</li>
+        //         <li>Temperature: ${temperature}</li>
+        //         <li>Oxygen Saturation: ${oxygenSaturation}</li>
+        //         <li>Systolic BP: ${systolicBp}</li>
+        //         <li>Diastolic BP: ${diastolicBp}</li>
+        //     `;
+        // });
+</script> 
+
+
+
+    <!-- <h1>Welcome to <span class="highlight">SEPSIS FORESEE</span></h1>
+    <p>Get more about sepsis right now with signin.</p>
+    <p>Click below</p> -->
+
+</div>
+<!-- <p>{{ result }}</p> -->
+
+</body>
+</html>

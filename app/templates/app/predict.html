@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <script>
+        function validateForm() {
+            // Get all input elements
+            var inputs = document.querySelectorAll('input[type="text"]');
+            var valid = true;
+
+            // Loop through each input to validate the value
+            inputs.forEach(function(input) {
+                var value = parseFloat(input.value);
+                if (isNaN(value) || value < 0 || value > 100) {
+                    valid = false;
+                    input.style.borderColor = 'red'; // Highlight invalid input
+                    alert(`Invalid input: ${input.name}. Please enter a number between 0 and 100.`);
+                } else {
+                    input.style.borderColor = ''; // Reset border color for valid input
+                }
+            });
+
+            return valid; // Return false to prevent form submission if invalid
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="/predict/" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <label for="prg_ctr">Pregnancies:</label>
+        <input type="text" name="prg_ctr" placeholder="Pregnancies" required><br>
+
+        <label for="glucose_conc">Glucose Concentration:</label>
+        <input type="text" name="glucose_conc" placeholder="Glucose Concentration" required><br>
+
+        <label for="diastolic_bp">Diastolic Blood Pressure:</label>
+        <input type="text" name="diastolic_bp" placeholder="Diastolic Blood Pressure" required><br>
+
+        <label for="thickness">Skin Thickness:</label>
+        <input type="text" name="thickness" placeholder="Skin Thickness" required><br>
+
+        <label for="insulin">Insulin:</label>
+        <input type="text" name="insulin" placeholder="Insulin" required><br>
+
+        <label for="bmi">BMI:</label>
+        <input type="text" name="bmi" placeholder="BMI" required><br>
+
+        <label for="dpf">Diabetes Pedigree Function:</label>
+        <input type="text" name="dpf" placeholder="Diabetes Pedigree Function" required><br>
+
+        <label for="age">Age:</label>
+        <input type="text" name="age" placeholder="Age" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

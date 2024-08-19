@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sepsis foresee</title>
+
+        <link rel="icon" href="https://i.ibb.co/7GQw6SW/Screenshot-2024-07-25-203806.png" type="image/icon type">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        {# MEDIUM STYLE EDITOR#}
+        <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+          .background {
+              /* background-image: url('https://i0.wp.com/www.missouripartnership.com/wp-content/uploads/2018/01/iStock-695349930-scaled.jpg?resize=1024%2C386&ssl=1'); */
+              background-image: url('https://i.ibb.co/Q8xFjhJ/Screenshot-2024-08-12-124254.png');
+              /* <img src="https://i.ibb.co/Q8xFjhJ/Screenshot-2024-08-12-124254.png" alt="Screenshot-2024-08-12-124254" border="0"></a> */
+              background-size: cover;
+              position: relative;
+              height: 100vh;
+              display: flex;
+
+              justify-content: flex-end; 
+              /* Move content to the right */
+              align-items: center;
+              text-align: center; /* Align text to the right */
+              padding-right: 20px; /* Add padding to the right */
+              color: black;
+          }
+          .content {
+              /* background-color: rgba(0, 0, 0, 0.5); */
+              padding: 20px;
+              border-radius: 10px;
+              margin-top: 350px;
+          /* }
+          .con {  */
+              background-color: rgba(230, 227, 227, 0.5);
+              /* padding-top: 100px ; */
+              /* padding-bottom: 100px; */
+              /* border-radius: 100px; */
+              /* margin-top: 100px; */
+              /* margin-right: 400px; */
+              /* padding-left: 0px; */
+              text-align: center;
+              /* padding-right: 100px; */
+          }
+          h1 {
+              font-size: 2.5em;
+          }
+          .highlight {
+              color: red;
+          }
+          .button {
+              margin-top: 20px;
+              padding: 10px 20px;
+              background-color: white;
+              color: black;
+              border: none;
+              cursor: pointer;
+          }
+          p{
+            padding-bottom: 0px;
+            font-size: 25px;
+          }
+      </style>
+</head>
+
+
+
+<body class='loader'>
+  <nav id="navbar" class="">
+    <div class="nav-wrapper">
+      <!-- Navbar Logo -->
+      <div class="logo">
+        <!-- Logo Placeholder for Illustration -->
+        <a href="{% url 'home' %}"><img width="100px" height="auto" src="https://i.ibb.co/Fnf5xdM/Screenshot-2024-07-25-203453.png"></a>
+      </div>
+  
+      <!-- Navbar Links -->
+      <ul id="menu">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'services' %}">Services</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+        <li><a href="{% url 'sign_up' %}"> Signup </a></li>
+        <li><a href="{% url 'login' %}"> Login </a></li>
+        <!-- <a href=""></a> -->
+
+      </ul>
+    </div>
+  </nav>
+  
+  
+
+  <div class="menuIcon">
+    <span class="icon icon-bars"></span>
+    <span class="icon icon-bars overlay"></span>
+  </div>
+  <div class="background">
+    <div class="content">
+        <h1>Welcome to SEPSIS FORESEE</h1>
+        <!-- <p>Get more about sepsis right now with signin.</p> -->
+        <p>Join us in the fight against sepsis.</p>
+        <!-- <p>Click below</p> -->
+        <a href="{% url 'sign_up' %}" class="button">Signup</a>
+    </div>
+</div>
+<div class="additional">
+  <p></p>
+
+</div>
+      
+
+      {# SCRIPTS#}
+      <script type="text/javascript" src="{% static 'js/javascript.js' %}"></script>
+
+</body>
+</html>
